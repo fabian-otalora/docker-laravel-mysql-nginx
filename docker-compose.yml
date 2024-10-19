@@ -1,0 +1,46 @@
+services:
+
+  videogames:
+    container_name: videogames
+    build:
+      context: ./docker/php
+    volumes:
+      - ./videogames:/var/www
+    networks:
+      - web-dev
+
+  nginx:
+    container_name: nginx
+    image: nginx
+    build:
+      context: ./docker/nginx
+    depends_on:
+      - videogames
+    volumes:
+      - ./videogames:/var/www
+    ports:
+      - "80:80"
+    networks:
+      - web-dev
+
+  mysql:
+    image: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: videogames
+    ports:
+      - 3306:3306
+    networks:
+      - web-dev
+  
+  # phpmyadmin:
+  #   image: phpmyadmin:latest
+  #   ports:
+  #     - 9001:80
+  #   environment:
+  #     - PMA_ARBITRARY=1
+
+networks: 
+  web-dev:
+    driver: bridge
