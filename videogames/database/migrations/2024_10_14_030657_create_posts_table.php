@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('video_games', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('genre_id');
-            $table->foreign('genre_id')->references('id')->on('genres');
-            $table->string('name', 300);
-            $table->boolean('active');
+            $table->unsignedBigInteger('player_id');
+            $table->foreign('player_id')->references('id')->on('players');
+            $table->string('text', 300);
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('video_games');
+        Schema::dropIfExists('posts');
     }
 };
