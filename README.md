@@ -4,4 +4,4 @@ La aplicación esta montada en Docker, para una facil instalacion en cualquier e
 
 Laravel 11, MySQL, PHP 8.3 y Nginx
 
-**Fabián Alejandro Otálora Silva | Desarrollador Senior 🇨🇴**
+**Fabián Alejandro Otálora Silva | Desarrollador de Software 🇨🇴**
